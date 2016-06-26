@@ -1,0 +1,312 @@
+﻿<UserControl x:Class="CotGBrowser.Views.UCRaidReport"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CotGBrowser.Views"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance local:UCRaidReportMV, IsDesignTimeCreatable=False}"
+             >
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
+            <TextBlock Text="{Binding SelectedReport.Title}" />
+        </StackPanel>
+        <!-- tabela z res -->
+        <GroupBox Header="Resources" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="0" Grid.Column="0" BorderThickness="0,0,1,1">
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="0" Grid.Column="1" BorderThickness="0,0,2,1">
+                    <TextBlock Text="Gold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="0" Grid.Column="2" BorderThickness="0,0,1,1">
+                    <TextBlock Text="Wood" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="0" Grid.Column="3" BorderThickness="0,0,1,1">
+                    <TextBlock Text="Stone" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="0" Grid.Column="4" BorderThickness="0,0,1,1">
+                    <TextBlock Text="Iron" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="0" Grid.Column="5" BorderThickness="0,0,1,1">
+                    <TextBlock Text="Food" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="0" Grid.Column="6" BorderThickness="0,0,0,1">
+                    <TextBlock Text="Total" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5"/>
+                </Border>
+
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="1" Grid.Column="0" BorderThickness="0,0,1,1">
+                    <TextBlock Text="Available:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" />
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="1" Grid.Column="1" BorderThickness="0,0,2,1">
+                    <TextBlock Text="{Binding SelectedReport.RtRes.Gold, StringFormat={}{0:N0}}" HorizontalAlignment="Right" 
+                               VerticalAlignment="Center" Margin="5" />
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="1" Grid.Column="2" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.RtRes.Wood, StringFormat={}{0:N0}}" HorizontalAlignment="Right" 
+                               VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="1" Grid.Column="3" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.RtRes.Stone, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="1" Grid.Column="4" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.RtRes.Iron, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="1" Grid.Column="5" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.RtRes.Food, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="1" Grid.Column="6" BorderThickness="0,0,0,1">
+                    <TextBlock Text="{Binding SelectedReport.RtRes.Total, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontWeight="Bold"/>
+                </Border>
+
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="2" Grid.Column="0" BorderThickness="0,0,1,1">
+                    <TextBlock Text="Expended:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" />
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="2" Grid.Column="1" BorderThickness="0,0,2,1">
+                    <TextBlock Text="{Binding SelectedReport.RlRes.Gold, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="2" Grid.Column="2" BorderThickness="0,0,1,1" >
+                    <TextBlock Text="{Binding SelectedReport.RlRes.Wood, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="2" Grid.Column="3" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.RlRes.Stone, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="2" Grid.Column="4" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.RlRes.Iron, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="2" Grid.Column="5" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.RlRes.Food, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="2" Grid.Column="6" BorderThickness="0,0,0,1">
+                    <TextBlock Text="{Binding SelectedReport.RlRes.Total, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontWeight="Bold"/>
+                </Border>
+
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="3" Grid.Column="0" BorderThickness="0,0,1,1">
+                    <TextBlock Text="Caried:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" />
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="3" Grid.Column="1" BorderThickness="0,0,2,1">
+                    <TextBlock Text="{Binding SelectedReport.RRes.Gold, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="3" Grid.Column="2" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.RRes.Wood, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="3" Grid.Column="3" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.RRes.Stone, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="3" Grid.Column="4" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.RRes.Iron, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="3" Grid.Column="5" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.RRes.Food, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="3" Grid.Column="6" BorderThickness="0,0,0,1">
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" >
+                        <TextBlock Text="{Binding SelectedReport.RRes.Total, StringFormat={}{0:N0}}" 
+                                   FontWeight="Bold" HorizontalAlignment="Right" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="(" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedReport.CarryCapacity, StringFormat={}{0:N0}}" 
+                                       FontWeight="Bold"/>
+                            <TextBlock Text="%)" FontWeight="Bold"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="4" Grid.Column="0" BorderThickness="0,0,1,1">
+                    <TextBlock Text="Not caried:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" />
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="4" Grid.Column="1" BorderThickness="0,0,2,1">
+                    <TextBlock Text="{Binding SelectedReport.NotCaried.Gold, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="4" Grid.Column="2" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.NotCaried.Wood, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="4" Grid.Column="3" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.NotCaried.Stone, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="4" Grid.Column="4" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.NotCaried.Iron, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="4" Grid.Column="5" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.NotCaried.Food, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="4" Grid.Column="6" BorderThickness="0,0,0,1">
+                    <TextBlock Text="{Binding SelectedReport.NotCaried.Total, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontWeight="Bold"/>
+                </Border>
+
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="5" Grid.Column="0" BorderThickness="0,0,1,1">
+                    <TextBlock Text="Profit (gold inc.):" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" />
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="5" Grid.Column="1" BorderThickness="0,0,2,1">
+                    <TextBlock Text="{Binding SelectedReport.Profit.Gold, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="5" Grid.Column="2" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.Profit.Wood, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="5" Grid.Column="3" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.Profit.Stone, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="5" Grid.Column="4" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.Profit.Iron, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="5" Grid.Column="5" BorderThickness="0,0,1,1">
+                    <TextBlock Text="{Binding SelectedReport.Profit.Food, StringFormat={}{0:N0}}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"/>
+                </Border>
+                <Border BorderBrush="{DynamicResource MaterialDesignBody}" Grid.Row="5" Grid.Column="6" BorderThickness="0,0,0,1">
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" >
+                        <TextBlock Text="{Binding SelectedReport.Profit.Total, StringFormat={}{0:N0}}" 
+                                   FontWeight="Bold" HorizontalAlignment="Right"/>
+
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="(" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding SelectedReport.TotalProfitPerc, StringFormat={}{0:N0}}" 
+                                       FontWeight="Bold"/>
+                            <TextBlock Text="%)" FontWeight="Bold"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="1" Header="Troops">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="Attack" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="5">
+                            <TextBlock Text="" HorizontalAlignment="Right" />
+                            <TextBlock Text="Sent:" HorizontalAlignment="Right"/>
+                            <TextBlock Text="Lost:" HorizontalAlignment="Right"/>
+                            <TextBlock Text="Survived:" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <ItemsControl ItemsSource="{Binding SelectedReport.AttackTrops}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate >
+                                    <StackPanel Margin="5">
+                                        <TextBlock Text="{Binding TropTypeDesc}" HorizontalAlignment="Center" />
+                                        <TextBlock Text="{Binding Sent}" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Lost}" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding LiveTrops}" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="Defense" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="5">
+                            <TextBlock Text="" HorizontalAlignment="Right" />
+                            <TextBlock Text="Sent:" HorizontalAlignment="Right"/>
+                            <TextBlock Text="Lost:" HorizontalAlignment="Right"/>
+                            <TextBlock Text="Survived:" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <ItemsControl ItemsSource="{Binding SelectedReport.DefTrops}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate >
+                                    <StackPanel Margin="5">
+                                        <TextBlock Text="{Binding TropTypeDesc}" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Sent}" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Lost}" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding LiveTrops}" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="2" Header="Calculator">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Res. to lot" />
+                    <TextBlock Grid.Row="1" Text="{Binding ResToLot, StringFormat={}{0:N0}}" VerticalAlignment="Center" />
+
+                    <TextBlock Grid.Column="1" Text="Capacity res. [%]" Margin="10 0 0 0"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="10 0 0 0" Text="{Binding CapacityReserve, StringFormat={}{0:N0}}" />
+
+                    <TextBlock Grid.Column="2" Text="Target capacity" Margin="10 0 0 0"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Margin="10 0 0 0" Text="{Binding TargetSquadCapacity, StringFormat={}{0:N0}}"  FontWeight="Bold"/>
+                </Grid>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0 20 0 0">
+                    <StackPanel Margin="5">
+                        <TextBlock Text="Name" HorizontalAlignment="Right" />
+                        <TextBlock Text="Weight:" Margin="0 4 0 0" HorizontalAlignment="Right"/>
+                        <TextBlock Text="Optimal:" Margin="0 14 0 0" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                    <ItemsControl ItemsSource="{Binding CalcTroops}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate >
+                                <StackPanel Margin="5">
+                                    <TextBlock Text="{Binding TroopName}" HorizontalAlignment="Center" />
+                                    <TextBox Text="{Binding Weight, StringFormat={}{0:N1}}" HorizontalAlignment="Center" />
+                                    <TextBlock Text="{Binding OptimalQty, StringFormat={}{0:N0}}" Margin="0 10 0 0" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

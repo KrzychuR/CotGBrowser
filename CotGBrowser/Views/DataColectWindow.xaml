@@ -1,0 +1,39 @@
+﻿<metro:MetroWindow x:Class="CotGBrowser.Views.DataColectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:res="clr-namespace:GotGLib.Res;assembly=GotGLib.Res"
+        xmlns:local="clr-namespace:CotGBrowser.Views"
+        mc:Ignorable="d"
+        Title="DataColoectWindow" Height="400" Width="600" GlowBrush="{DynamicResource AccentColorBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0">
+            <!--
+            <Button Content="Wstrzyknij skrypty" Command="{Binding InjectScriptsCmd}" />
+            -->
+            <Button Content="Download rankings" Command="{Binding DownloadEmpireRankingsCmd}" />
+            <!--
+            <Button Content="Test" Command="{Binding TestCmd}" />
+            -->
+        </WrapPanel>
+        <GroupBox Grid.Row="1" Header="Messages">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <TextBlock Text="{Binding LastMessage}"/>
+                    <metro:MetroProgressBar Value="{Binding CurrentStep}" Maximum="{Binding TotalSteps}" Height="10"/>
+                </StackPanel>
+                <ListBox Grid.Row="1" ItemsSource="{Binding Messages}" FontSize="9.333"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</metro:MetroWindow>

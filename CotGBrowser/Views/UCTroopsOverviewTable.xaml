@@ -1,0 +1,280 @@
+﻿<UserControl x:Class="CotGBrowser.Views.UCTroopsOverviewTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CotGBrowser.Views"
+             xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:res="clr-namespace:GotGLib.Res;assembly=GotGLib.Res"
+             xmlns:mat="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance d:Type=local:UCTroopsOverviewTableMV, IsDesignTimeCreatable=False}" 
+             d:DesignHeight="300" d:DesignWidth="700">
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DataGrid ItemsSource="{Binding OverviewData}" AutoGenerateColumns="False" IsReadOnly="True" Margin="10 0 10 0"
+                  VirtualizingPanel.IsVirtualizingWhenGrouping="True" EnableColumnVirtualization="False" EnableRowVirtualization="True"
+                  >
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <GroupBox Header="{Binding Path=Name}">
+                                            <StackPanel>
+                                                <ItemsPresenter />
+                                            </StackPanel>
+                                        </GroupBox>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding CityName}" Header="CityName"/>
+                <DataGridTextColumn Binding="{Binding Location}" Header="Location" />
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.TotalDefTS" Header="Off [TS]">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.TotalOffTS, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.TotalOffTS, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.TotalDefTS" Header="Def [TS]">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.TotalDefTS, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.TotalDefTS, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.TotalTS" Header="TS">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.TotalTS, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.TotalTS, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Vanquisher" Header="Vanquisher">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Vanquisher, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Vanquisher, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Sorcerer" Header="Sorcerer">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Sorcerer, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Sorcerer, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Horseman" Header="Horseman">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Horseman, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Horseman, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Druid" Header="Druid">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Druid, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Druid, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Ranger" Header="Ranger">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Ranger, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Ranger, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Priestess" Header="Priestess">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Priestess, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Priestess, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Triari" Header="Triari">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Triari, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Triari, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Arbalist" Header="Arbalist">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Arbalist, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Arbalist, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Praetor" Header="Praetor">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Praetor, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Praetor, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Scout" Header="Scout">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Scout, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Scout, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Balista" Header="Balista">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Balista, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Balista, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Ram" Header="Ram">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Ram, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Ram, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Scorpion" Header="Scorpion">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Scorpion, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Scorpion, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Galley" Header="Galley">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Galley, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Galley, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Stinger" Header="Stinger">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Stinger, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Stinger, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Warship" Header="Warship">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Warship, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Warship, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn SortMemberPath="TroopsAtHome.Senator" Header="Senator">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding TroopsAtHome.Senator, StringFormat={}{0:N0}}" />
+                                <TextBlock Text="{Binding TotalTroops.Senator, StringFormat={}{0:N0}}" FontSize="8" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Binding="{Binding TroopsAtHome.Guard, StringFormat={}{0:N0}}" Header="Guard" />
+                <DataGridTextColumn Binding="{Binding WallLevel}" Header="WallLevel" />
+                <DataGridTextColumn Binding="{Binding SpootTime}" Header="SpootTime" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <ToolBarTray Grid.Row="1">
+            <ToolBar>
+                <TextBox Width="120" VerticalAlignment="Center"
+                         mat:TextFieldAssist.Hint="Row must contains..."
+                         Text="{Binding FilterTxt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyDown="TextBox_KeyDown"/>
+                <CheckBox Content="Cities without any command only" IsChecked="{Binding CitiesWithoutCommandsOnly, UpdateSourceTrigger=PropertyChanged}" />
+            </ToolBar>
+            <ToolBar>
+                <Button Content="{x:Static res:Labels.Refresh}" Command="{Binding RefreshCmd}" Style="{StaticResource MaterialDesignRaisedLightButton}"/>
+            </ToolBar>
+        </ToolBarTray>
+    </Grid>
+</UserControl>

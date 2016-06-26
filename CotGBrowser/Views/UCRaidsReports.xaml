@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="CotGBrowser.Views.UCRaidsReports"
+             xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mat="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:CotGBrowser.Views"
+             xmlns:res="clr-namespace:GotGLib.Res;assembly=GotGLib.Res"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance local:UCRaidsReportsMV, IsDesignTimeCreatable=False}"
+             d:DesignHeight="300" d:DesignWidth="700">
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        
+        <GroupBox Grid.Column="0" Header="Cities">
+            <ListBox ItemsSource="{Binding Cities}" SelectedItem="{Binding SelectedCity}" />
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Header="Selected city reports">
+            <DataGrid Margin="10 0 10 0" ItemsSource="{Binding DataView}" AutoGenerateColumns="False" IsReadOnly="True"
+                      SelectedItem="{Binding SelectedReport}" EnableColumnVirtualization="False" EnableRowVirtualization="True"
+                      VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                      >
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="{x:Static res:Labels.IsNew}" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsNew}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding CavernType}" Header="{x:Static res:Labels.CavernType}" />
+                    <DataGridTextColumn Binding="{Binding Level, StringFormat={}{0:N0}}" Header="{x:Static res:Labels.Level}" />
+                    <DataGridTextColumn Binding="{Binding Progress, StringFormat={}{0:N0}}" Header="{x:Static res:Labels.ProgressPerc}" />
+                    <DataGridTextColumn Binding="{Binding CarryCapacity, StringFormat={}{0:N0}}" Header="{x:Static res:Labels.CarryCapacityPerc}" />
+                    <DataGridTextColumn Binding="{Binding CavernCoords}" Header="{x:Static res:Labels.CavernCoords}" />
+                    <DataGridTextColumn Binding="{Binding AttackCity}" Header="{x:Static res:Labels.AttackCity}" />
+                    <DataGridTextColumn Binding="{Binding ReportDT}" Header="{x:Static res:Labels.ReportDT}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <ToolBarTray Grid.Row="1" Grid.ColumnSpan="2">
+            <ToolBar>
+                <TextBlock Text="{x:Static res:Labels.Search}" VerticalAlignment="Center"/>
+                <TextBox Width="120" VerticalAlignment="Center" mat:TextFieldAssist.Hint="Row mus contains..."
+                         Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <CheckBox Content="{x:Static res:Labels.InsufficientCapacity}" IsChecked="{Binding InsufficientCapacity}" VerticalAlignment="Center"/>
+                <CheckBox Content="{x:Static res:Labels.NewOnly}" IsChecked="{Binding NewOnly}" VerticalAlignment="Center"/>
+                <TextBlock Text="{x:Static res:Labels.Last}" VerticalAlignment="Center" Margin="15 0 0 0"/>
+                <TextBox Text="{Binding LastNReports, Mode=TwoWay}" Width="20" VerticalAlignment="Center"/>
+                <TextBlock Text="reports" VerticalAlignment="Center"/>
+            </ToolBar>
+            <ToolBar>
+                <Button Content="{x:Static res:Labels.Refresh}" Command="{Binding RefreshCmd}" Style="{StaticResource MaterialDesignRaisedLightButton}"/>
+            </ToolBar>
+        </ToolBarTray>
+    </Grid>
+</UserControl>

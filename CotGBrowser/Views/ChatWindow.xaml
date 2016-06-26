@@ -1,0 +1,127 @@
+﻿<metro:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:CotGBrowser.Views"
+        xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:res="clr-namespace:GotGLib.Res;assembly=GotGLib.Res"
+        xmlns:mat="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Common="clr-namespace:CotGBrowser.Common" x:Name="metroWindow" x:Class="CotGBrowser.Views.ChatWindow"
+        mc:Ignorable="d" d:DataContext="{d:DesignInstance IsDesignTimeCreatable=False, Type={x:Type local:ChatWindowMV}}"
+        Title="ChatWindow" Style="{StaticResource WindowStyle}" 
+                   ShowSystemMenuOnRightClick="False" ShowMaxRestoreButton="False" ResizeMode="CanResizeWithGrip"
+                   Background="#D8000000" Foreground="White" Topmost="True" WindowState="{Binding WndState, Mode=TwoWay}">
+    <metro:MetroWindow.Resources>
+        <Common:NegatingConverter x:Key="NegatingConverter"/>
+        <Common:Bool2VisibilityConverter x:Key="Bool2VisibilityConverter"/>
+    </metro:MetroWindow.Resources>
+    <metro:MetroWindow.RightWindowCommands>
+        <metro:WindowCommands>
+            <ToggleButton IsChecked="{Binding Topmost, ElementName=metroWindow}">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="10" Height="10"
+                   Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_pin}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </StackPanel>
+            </ToggleButton>
+        </metro:WindowCommands>
+    </metro:MetroWindow.RightWindowCommands>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <AdornerDecorator Grid.Row="1" Panel.ZIndex="1" Width="60" Height="60">
+            <metro:ProgressRing IsActive="{Binding IsBusy}"/>
+        </AdornerDecorator>
+        <Expander Grid.Column="1" Grid.RowSpan="3" Background="{x:Null}" Padding="0" Foreground="White" IsExpanded="False" Visibility="Collapsed">
+            <StackPanel Margin="4">
+                <TextBlock Text="Font size"/>
+                <TextBox Text="{Binding FontSize, ElementName=rtb}" />
+            </StackPanel>
+        </Expander>
+        <StackPanel Margin="0" Orientation="Horizontal" Background="{DynamicResource MaterialDesignPaper}" 
+                    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource NegatingConverter}}">
+                <CheckBox Content="World" IsChecked="{Binding IsWorldVisible}" VerticalAlignment="Center"/>
+                <CheckBox Content="Alliance" Margin="7 0 0 0" IsChecked="{Binding IsAllyVisible}" VerticalAlignment="Center"/>
+            <CheckBox Content="Officer" Margin="7 0 0 0" IsChecked="{Binding IsOfficerVisible}" VerticalAlignment="Center" Visibility="{Binding IsOfficer, Converter={StaticResource Bool2VisibilityConverter}}"/>
+                <CheckBox Content="Whispers" Margin="7 0 0 0" IsChecked="{Binding IsWhisperVisible}" VerticalAlignment="Center"/>
+                <TextBlock Text="Player: " Margin="20 2 2 2" VerticalAlignment="Center"/>
+                <TextBox MinWidth="30" Margin="2" Text="{Binding PlayerFilter, Mode=TwoWay}"
+                       mat:TextFieldAssist.Hint="Name to filter..."
+                         />
+        </StackPanel>
+        <!--VerticalScrollBarVisibility="Auto" -->
+        <FlowDocumentScrollViewer Hyperlink.Click="Hyperlink_Click" Grid.Row="1"
+			Background="{x:Null}" x:Name="rtb" IsToolBarVisible="True">
+            <FlowDocumentScrollViewer.Resources>
+                <Style TargetType="{x:Type Paragraph}">
+                    <Setter Property="Margin" Value="0"/>
+                </Style>
+            </FlowDocumentScrollViewer.Resources>
+            <!--
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="TextChanged">
+                    <local:ScrollToBottomAction/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+-->
+            <FlowDocument PagePadding="0">
+                <Paragraph Foreground="#FF88FF" FontFamily="Segoe UI" FontSize="13.333">
+                    <Hyperlink Click="Hyperlink_Click" TextDecorations="{x:Null}" FontWeight="Bold" >
+                        <Run Text="dede"/>
+                    </Hyperlink>
+                </Paragraph>
+                <Paragraph Foreground="#FF88FF" FontFamily="Segoe UI" FontSize="13.333" Margin="0">
+                    <Run Text="dede"/>
+                    <InlineUIContainer BaselineAlignment="Center">
+                        <Image Height="15" Margin="2 0 2 0" Source="pack://application:,,,/emotions/icon_smile.gif"></Image>
+                    </InlineUIContainer>
+                    <Run Text="dede"/>
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+        <StackPanel Grid.Row="2">
+            <StackPanel Margin="0" Orientation="Horizontal" Background="{DynamicResource MaterialDesignPaper}"
+				TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+                <StackPanel Margin="2" Orientation="Horizontal">
+                    <RadioButton Content="World" IsChecked="{Binding Out2World}"/>
+                    <RadioButton Content="Alliance" Margin="7 0 0 0" IsChecked="{Binding Out2Ally}"/>
+                    <RadioButton Content="Officer" Margin="7 0 0 0" IsChecked="{Binding Out2Officers}" Visibility="{Binding IsOfficer, Converter={StaticResource Bool2VisibilityConverter}}"/>
+                    <RadioButton Content="Whisper mode" Margin="7 0 0 0" IsChecked="{Binding IsWhisperMode}"/>
+                    <CheckBox Margin="30 0 0 0" Content="Auto-scroll" IsChecked="{Binding AutoScroll}"/>
+                </StackPanel>
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Background="{DynamicResource MaterialDesignPaper}" 
+                            TextElement.Foreground="{DynamicResource MaterialDesignBody}" 
+                            Visibility="{Binding IsWhisperMode, Converter={StaticResource Bool2VisibilityConverter}}"
+                            >
+                    <TextBlock Text="Whisper to:" Margin="2 2 0 2" VerticalAlignment="Center" 
+                               />
+                    <TextBox VerticalAlignment="Center" MinWidth="30" Margin="5 2 5 2" Text="{Binding WhisperTo, Mode=TwoWay}"
+                             mat:TextFieldAssist.Hint="Player name..."/>
+                </StackPanel>
+
+                <TextBox Grid.Column="1" x:Name="tb" FontSize="13.333" Text="{Binding OutMsg, UpdateSourceTrigger=PropertyChanged}" PreviewKeyDown="TextBox_PreviewKeyDown"
+                         mat:TextFieldAssist.Hint="Message..."
+					    KeyDown="TextBox_KeyDown" HorizontalAlignment="Stretch" Background="Black"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</metro:MetroWindow>
