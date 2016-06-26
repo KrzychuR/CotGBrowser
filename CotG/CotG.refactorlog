@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="35e10e46-6416-4ebb-8a61-5588af364a1a" ChangeDateTime="02/18/2016 21:47:52">
+    <Property Name="ElementName" Value="[dbo].[RankingsEmpireScore].[int]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RankingsEmpireScore]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Rank" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="df8521de-6940-4d5f-8adf-5181293c48ef" ChangeDateTime="02/22/2016 20:05:17">
+    <Property Name="ElementName" Value="[dbo].[CurrentEmpireRanking].[UnitsKils]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[CurrentEmpireRanking]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UnitsKills" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c48a3491-2cc0-4537-84d8-e4be4a3e5b86" ChangeDateTime="02/22/2016 21:52:12">
+    <Property Name="ElementName" Value="[dbo].[UnitsKillsHistory].[UpdateDT]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UnitsKillsHistory]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreateDT" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cf803187-989d-497e-8c16-6e39a26a4250" ChangeDateTime="03/08/2016 19:02:09">
+    <Property Name="ElementName" Value="[dbo].[OffReputationHistory].[UpdateDT]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[OffReputationHistory]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreateDT" />
+  </Operation>
+</Operations>
