@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlianceScoreAndCities" xml:space="preserve">
+    <value>Aliance score and cities</value>
+  </data>
+  <data name="Alliance" xml:space="preserve">
+    <value>Alliance</value>
+  </data>
+  <data name="AvgKilledUnitsGain" xml:space="preserve">
+    <value>Avg k. units gain</value>
+  </data>
+  <data name="AvgScoreGain" xml:space="preserve">
+    <value>Avg score gain</value>
+  </data>
+  <data name="Bars" xml:space="preserve">
+    <value>Bars</value>
+  </data>
+  <data name="Cities" xml:space="preserve">
+    <value>Cities</value>
+  </data>
+  <data name="Cities_pm" xml:space="preserve">
+    <value>Cities +/-</value>
+  </data>
+  <data name="Continent" xml:space="preserve">
+    <value>Continent</value>
+  </data>
+  <data name="Continents" xml:space="preserve">
+    <value>Continents</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DefReputation" xml:space="preserve">
+    <value>Defense reputation</value>
+  </data>
+  <data name="Difference1" xml:space="preserve">
+    <value>(difference)</value>
+  </data>
+  <data name="Differential" xml:space="preserve">
+    <value>Differential</value>
+  </data>
+  <data name="DiffScore" xml:space="preserve">
+    <value>Differential score</value>
+  </data>
+  <data name="EmpireStats" xml:space="preserve">
+    <value>Empire stats</value>
+  </data>
+  <data name="KilledUnits" xml:space="preserve">
+    <value>Killed units</value>
+  </data>
+  <data name="KilledUnitsRank" xml:space="preserve">
+    <value>K. units rank</value>
+  </data>
+  <data name="OffReputation" xml:space="preserve">
+    <value>Offense reputation</value>
+  </data>
+  <data name="PageLoading" xml:space="preserve">
+    <value>Page loading... please be patient :)</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="Rank" xml:space="preserve">
+    <value>Rank</value>
+  </data>
+  <data name="Rankings" xml:space="preserve">
+    <value>Rankings</value>
+  </data>
+  <data name="Rank_pm" xml:space="preserve">
+    <value>Rank +/-</value>
+  </data>
+  <data name="Reputation" xml:space="preserve">
+    <value>Reputation</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="ScoreSpeed" xml:space="preserve">
+    <value>Speed (Score points/minute)</value>
+  </data>
+  <data name="Score_pm" xml:space="preserve">
+    <value>Score +/-</value>
+  </data>
+  <data name="WorldAlianceScore" xml:space="preserve">
+    <value>World - aliance score</value>
+  </data>
+  <data name="AvgDefRepGain" xml:space="preserve">
+    <value>Avg def. rep. gain</value>
+  </data>
+  <data name="AvgOffRepGain" xml:space="preserve">
+    <value>Avg off. rep. gain</value>
+  </data>
+  <data name="Caverns" xml:space="preserve">
+    <value>Caverns</value>
+  </data>
+  <data name="CavernsRank" xml:space="preserve">
+    <value>Caverns rank</value>
+  </data>
+  <data name="DefRepRank" xml:space="preserve">
+    <value>Deffense rep. rank</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Load" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="OffRepRank" xml:space="preserve">
+    <value>Offense rep. rank</value>
+  </data>
+  <data name="Players" xml:space="preserve">
+    <value>Players</value>
+  </data>
+  <data name="Plot" xml:space="preserve">
+    <value>Plot</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="RefreshPlot" xml:space="preserve">
+    <value>Refresh plot</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="TimePlot" xml:space="preserve">
+    <value>Plot (timeline)</value>
+  </data>
+  <data name="Updated" xml:space="preserve">
+    <value>Updated</value>
+  </data>
+  <data name="Game" xml:space="preserve">
+    <value>Game</value>
+  </data>
+  <data name="AttackCity" xml:space="preserve">
+    <value>Attacking city</value>
+  </data>
+  <data name="CarryCapacityPerc" xml:space="preserve">
+    <value>Carry capacity %</value>
+  </data>
+  <data name="CavernCoords" xml:space="preserve">
+    <value>Cavern coords</value>
+  </data>
+  <data name="CavernType" xml:space="preserve">
+    <value>Cavern type</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>days</value>
+  </data>
+  <data name="InsufficientCapacity" xml:space="preserve">
+    <value>Insuffucient capacity</value>
+  </data>
+  <data name="IsNew" xml:space="preserve">
+    <value>New?</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Last</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="NewOnly" xml:space="preserve">
+    <value>New only</value>
+  </data>
+  <data name="ProgressPerc" xml:space="preserve">
+    <value>Progress %</value>
+  </data>
+  <data name="RaidReports" xml:space="preserve">
+    <value>Raids reports</value>
+  </data>
+  <data name="ReportDT" xml:space="preserve">
+    <value>Report date</value>
+  </data>
+  <data name="SelectedReport" xml:space="preserve">
+    <value>Selected report</value>
+  </data>
+</root>
