@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define AppName="CotGBrowser" ?>
+  <?define Version="0.9.4.0" ?>
+
+    <Product Id="*" Name="$(var.AppName) $(var.Version)" Language="1033" 
+           Version="$(var.Version)" Manufacturer="ProITSoft Krzysztof Raczkowski" UpgradeCode="37080709-7498-4f4d-a152-a967d709c129">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of '$(var.AppName) $(var.Version)' is already installed." />
+		<Media Id="1" CompressionLevel="high" Cabinet="cab" EmbedCab="yes" />
+
+      <!-- bez punktu przywracania... -->
+    <Property Id="MSIFASTINSTALL" Value="1" />
+
+    <PropertyRef Id="NETFRAMEWORK45" />
+    <Condition Message=".NET 4.5 is required">Installed OR NETFRAMEWORK45</Condition>
+
+    <Property Id="ApplicationFolderName" Value="CotGBrowser" />
+    <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+
+    <UI>
+      <!-- dialog z opcją uruchomienia automatycznego aplikacji po zakończeniu instalacji -->
+      <UIRef Id="WixUI_Advanced" />
+    </UI>
+
+      <!-- ikonka do menu start -->
+    <Icon Id="StartMenuIcon" SourceFile="$(var.CotGBrowser.TargetDir)CotGBrowser.exe" />
+      
+		<Feature Id="ProductFeature" Title="CotGBrowserSetup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="StartMenuShortcuts"/>
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="CotGBrowser">
+          <Directory Id="Log" Name="Log" />
+          <Directory Id="Data" Name="Data" />
+          <Directory Id="sqllite_x86" Name="x86" />
+          <Directory Id="sqllite_x64" Name="x64" />
+          <Directory Id="pl_PL" Name="pl-PL" />
+          <Directory Id="locales" Name="locales" />
+        </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder">
+          <Directory Id="ProgramMenuDirCotGBrowser" Name="CotGBrowser">
+            <Component Id="StartMenuShortcuts" Guid="8707F61F-F987-4720-8DAB-9F4E05FF474F">
+              <RemoveFolder Id="ProgramMenuDirCotGBrowser" On="uninstall" />
+              <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" />
+              <Shortcut Id="UninstallProduct" Name="Unistall" Description="Unistall application" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+              <Shortcut Id="ExeShortcut" Target="[INSTALLFOLDER]CotGBrowser.exe" Name="CotGBrowser" Icon="StartMenuIcon" IconIndex="0" WorkingDirectory="INSTALLFOLDER" />
+            </Component>
+          </Directory>
+      </Directory>
+    
+    </Directory>
+
+  
+  </Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents">
+      <Component Id="ProductComponent" Directory="INSTALLFOLDER" Guid="A1F43A9B-F7BA-49D1-9CBC-FBB33FE0DFAB">
+        <RemoveFile Id="PurgeAllFilesFolder" Name="*.*" On="uninstall" />
+
+        <File Source="$(var.CotGBrowser.TargetDir)CotGBrowser.exe" />
+        <File Source="$(var.CotGBrowser.TargetDir)CotGBrowser.exe.config" />
+        <File Source="$(var.CotGBrowser.TargetDir)GotGLib.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)GotGLib.Res.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)GotLib.Security.dll" />
+        <!--<File Source="$(var.CotGBrowser.TargetDir)splash2.png" />-->
+        
+        <File Source="$(var.CotGBrowser.TargetDir)System.Data.SQLite.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)AutoMapper.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)FluentNHibernate.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)NHibernate.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)Iesi.Collections.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)log4net.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)System.Windows.Interactivity.dll" />
+
+        <File Source="$(var.CotGBrowser.TargetDir)OxyPlot.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)OxyPlot.Wpf.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)OxyPlot.Xps.dll" />
+        
+        <File Source="$(var.CotGBrowser.TargetDir)MahApps.Metro.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)MaterialDesignColors.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)MaterialDesignThemes.MahApps.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)MaterialDesignThemes.Wpf.dll" />
+
+        <File Source="$(var.CotGBrowser.TargetDir)Microsoft.Practices.ServiceLocation.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)Microsoft.Practices.Unity.Configuration.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)Microsoft.Practices.Unity.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+        
+        <File Source="$(var.CotGBrowser.TargetDir)Newtonsoft.Json.dll" />
+
+        <File Source="$(var.CotGBrowser.TargetDir)cef.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)cef_100_percent.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)cef_200_percent.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)cef_extensions.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)CefSharp.BrowserSubprocess.Core.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)CefSharp.BrowserSubprocess.exe" />
+        <File Source="$(var.CotGBrowser.TargetDir)CefSharp.Core.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)CefSharp.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)CefSharp.WinForms.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)d3dcompiler_43.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)d3dcompiler_47.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)devtools_resources.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)icudtl.dat" />
+        <File Source="$(var.CotGBrowser.TargetDir)libcef.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)libEGL.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)libGLESv2.dll" />
+        <File Source="$(var.CotGBrowser.TargetDir)natives_blob.bin" />
+        <File Source="$(var.CotGBrowser.TargetDir)snapshot_blob.bin" />
+        <File Source="$(var.CotGBrowser.TargetDir)widevinecdmadapter.dll" />
+
+        <CreateFolder Directory="Log">
+          <Permission User="Everyone" GenericAll="yes"/>
+        </CreateFolder>
+        <CreateFolder Directory="Data">
+          <Permission User="Everyone" GenericAll="yes"/>
+        </CreateFolder>
+      </Component>
+      <Component Id="ProductComponents_x64" Directory="sqllite_x64" Guid="4B112E4D-23C9-4DD5-9497-A9C7D697D335">
+        <File Source="$(var.CotGBrowser.TargetDir)x64\SQLite.Interop.dll" Id="SQLite.Interop.dll_x64" />
+      </Component>
+      <Component Id="ProductComponents_x86" Directory="sqllite_x86" Guid="913E2218-2519-4C2E-9890-1CDC6FF00354">
+        <File Source="$(var.CotGBrowser.TargetDir)x86\SQLite.Interop.dll" Id="SQLite.Interop.dll_x86"/>
+      </Component>
+      <Component Id="ProductComponents_data" Directory="Data" Guid="7B7EFA43-4458-4442-AB13-8966255F2E98"
+                NeverOverwrite="yes" Permanent="yes">
+        <File Source="$(var.CotGBrowser.TargetDir)data\db.sqlite" KeyPath="yes"/>
+      </Component>
+      <Component Id="ProductComponents_lang" Directory="pl_PL" Guid="214D9B76-8FA0-4615-8CAE-ADE13C723A9C">
+        <File Source="$(var.CotGBrowser.TargetDir)pl-PL\GotGLib.Res.resources.dll" />
+      </Component>
+      <Component Id="ProductComponents_CEF_locales" Directory="locales" Guid="0F0908D3-0C0D-468A-BC61-B66BC42F0F9D">
+        <File Source="$(var.CotGBrowser.TargetDir)locales\am.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\ar.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\bg.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\bn.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\ca.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\cs.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\da.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\de.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\el.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\en-GB.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\en-US.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\es.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\es-419.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\et.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\fa.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\fi.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\fil.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\fr.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\gu.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\he.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\hi.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\hr.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\hu.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\id.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\it.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\ja.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\kn.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\ko.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\lt.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\lv.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\ml.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\mr.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\ms.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\nb.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\nl.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\pl.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\pt-BR.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\pt-PT.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\ro.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\ru.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\sk.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\sl.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\sr.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\sv.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\sw.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\ta.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\te.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\th.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\tr.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\uk.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\vi.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\zh-CN.pak" />
+        <File Source="$(var.CotGBrowser.TargetDir)locales\zh-TW.pak" />
+      </Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
