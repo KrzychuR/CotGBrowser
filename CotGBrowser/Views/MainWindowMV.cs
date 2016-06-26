@@ -31,7 +31,6 @@ namespace CotGBrowser.Views
                 if (!string.IsNullOrWhiteSpace(path))
                     path += @"\";
 
-                StatusInfo = "DB file: " + path + @"data\db.sqlite";
                 MainWindowTitle = "CotGBrowser, " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
                 JSInterface = IoCHelper.GetIoC().Resolve<JScriptInterface>();
@@ -220,6 +219,10 @@ namespace CotGBrowser.Views
             if (!string.IsNullOrWhiteSpace(PlayerName))
             {
                 m_Timer.IsEnabled = false;
+
+                var dbHelper = IoCHelper.GetIoC().Resolve<DialectHelper>();
+                StatusInfo = "DB file: " + dbHelper.DBFileName();
+
                 HasAccess2Reports = true;
             }
         }

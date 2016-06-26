@@ -17,34 +17,17 @@ namespace GotGLib.DB
     {
         public override ISessionFactory CreateSessionFactory(Database db)
         {
-            string world = JSInterface.GetWorldNum();
+            Configuration _cfg = new Configuration();
 
-            if(string.IsNullOrWhiteSpace(world))
+            var dbFile = DBFileName();
+
+            if(string.IsNullOrWhiteSpace(dbFile))
             {
                 throw new NotSupportedException("You can not access database without world context.");
             }
 
-            world = world.Trim().Replace(" ", "");
-
-            Configuration _cfg = new Configuration();
-
-            string path = (AppDomain.CurrentDomain.GetData("DataDirectory") as string ?? "");
-
-            if (!string.IsNullOrWhiteSpace(path))
-                path += @"\";
-
-            var baseFile = path + @"data\db.sqlite";
-            var dataDir = path + string.Format(@"data\{0}", world);
-            var dataFile = dataDir + @"\db.sqlite";
-
-            if(!System.IO.File.Exists(dataFile))
-            {
-                System.IO.Directory.CreateDirectory(dataDir);
-                System.IO.File.Copy(baseFile, dataFile, false);
-            }
-
             var fluentCfg = Fluently.Configure(_cfg)
-                .Database(SQLiteConfiguration.Standard.UsingFile(dataFile))
+                .Database(SQLiteConfiguration.Standard.UsingFile(m_DataFile))
                 .Mappings(m =>
                 {
                     foreach (Assembly a in db.GetAssembliesWithMappings())
@@ -72,6 +55,33 @@ namespace GotGLib.DB
             return false;
         }
 
+        public override string DBFileName()
+        {
+            string world = JSInterface.GetWorldNum();
+
+            if (!string.IsNullOrWhiteSpace(world))
+            {
+                world = world.Trim().Replace(" ", "");
+
+                string path = (AppDomain.CurrentDomain.GetData("DataDirectory") as string ?? "");
+
+                if (!string.IsNullOrWhiteSpace(path))
+                    path += @"\";
+
+                var baseFile = path + @"data\db.sqlite";
+                var dataDir = path + string.Format(@"data\{0}", world);
+                m_DataFile = dataDir + @"\db.sqlite";
+
+                if (!System.IO.File.Exists(m_DataFile))
+                {
+                    System.IO.Directory.CreateDirectory(dataDir);
+                    System.IO.File.Copy(baseFile, m_DataFile, false);
+                }
+            }
+
+            return m_DataFile;
+        }
+
         private JScriptInterface m_JSInterface;
         
         /// <summary>
@@ -91,5 +101,10 @@ namespace GotGLib.DB
             }
                 
         }
+
+        /// <summary>
+        /// Actual DB data file
+        /// </summary>
+        private string m_DataFile;
     }
 }

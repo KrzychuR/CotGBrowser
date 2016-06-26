@@ -67,5 +67,14 @@ namespace GotGLib.DB
         /// <param name="exception">Wyjątek do sprawdzenia</param>
         /// <returns>TRUE/FALSE w zależności od tego czy wyjątek jest związany z deadlockiem</returns>
         public abstract bool IsDeadlock(Exception exception);
+
+        /// <summary>
+        /// Full path to DB file name - if supported by RDBMS
+        /// </summary>
+        /// <returns></returns>
+        public virtual string DBFileName()
+        {
+            return null;
+        }
     }
 }
