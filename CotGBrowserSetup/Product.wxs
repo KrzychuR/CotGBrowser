@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?define AppName="CotGBrowser" ?>
-  <?define Version="0.9.4.0" ?>
+  <?define Version="0.9.5.0" ?>
 
     <Product Id="*" Name="$(var.AppName) $(var.Version)" Language="1033" 
            Version="$(var.Version)" Manufacturer="ProITSoft Krzysztof Raczkowski" UpgradeCode="37080709-7498-4f4d-a152-a967d709c129">
@@ -71,8 +71,6 @@
         <File Source="$(var.CotGBrowser.TargetDir)CotGBrowser.exe.config" />
         <File Source="$(var.CotGBrowser.TargetDir)GotGLib.dll" />
         <File Source="$(var.CotGBrowser.TargetDir)GotGLib.Res.dll" />
-        <File Source="$(var.CotGBrowser.TargetDir)GotLib.Security.dll" />
-        <!--<File Source="$(var.CotGBrowser.TargetDir)splash2.png" />-->
         
         <File Source="$(var.CotGBrowser.TargetDir)System.Data.SQLite.dll" />
         <File Source="$(var.CotGBrowser.TargetDir)AutoMapper.dll" />
