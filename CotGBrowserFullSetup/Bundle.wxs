@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+	<Bundle Name="CotGBrowser - full setup" Version="0.9.4.0" Manufacturer="ProITSoft Krzysztof Raczkowski" UpgradeCode="f29e44d4-096f-454b-a908-7bc1be73ba34">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+      <bal:WixStandardBootstrapperApplication
+        ShowVersion="yes"
+        LicenseFile="License.rtf"
+        />
+    </BootstrapperApplicationRef>
+
+    <Chain>
+      <ExePackage Id="vc120" Cache="yes" PerMachine="yes" Permanent="yes" Vital="yes" SourceFile="vcredist_x86.exe"
+                  InstallCommand="/quiet /norestart" Protocol="burn" />
+      <RollbackBoundary />
+      <PackageGroupRef Id="NetFx45Web"/>
+      <RollbackBoundary />
+      <MsiPackage SourceFile="$(var.CotGBrowserSetup.TargetDir)CotGBrowserSetup.msi" Vital="yes" DisplayInternalUI="no" />
+    </Chain>
+  </Bundle>
+</Wix>
